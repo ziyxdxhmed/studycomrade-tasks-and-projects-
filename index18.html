@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .error {
+            color: red;
+            font-size: 0.8em;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">User Registration Form</h1>
+        <form id="myForm" novalidate>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" class="form-control" id="name" required>
+                <div id="nameError" class="error">Name is required and must be at least 3 characters.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" required>
+                <div id="emailError" class="error">Please enter a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact:</label>
+                <input type="tel" class="form-control" id="contact" required>
+                <div id="contactError" class="error">Contact number is required and must be 10 digits.</div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="age" class="form-label">Age:</label>
+                <input type="number" class="form-control" id="age" min="18" max="100" required>
+                <div id="ageError" class="error">Age is required and must be between 18 and 100.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="designation" class="form-label">Designation:</label>
+                <input type="text" class="form-control" id="designation" required>
+                <div id="designationError" class="error">Designation is required.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="dob" class="form-label">Date of Birth:</label>
+                <input type="date" class="form-control" id="dob" required>
+                <div id="dobError" class="error">Date of Birth is required.</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="files" class="form-label">Upload Files:</label>
+                <input type="file" class="form-control" id="files" multiple>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Form</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"> 
+        // Get form and input elements
+const form = document.getElementById('myForm');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const contactInput = document.getElementById('contact');
+const ageInput = document.getElementById('age');
+const designationInput = document.getElementById('designation');
+const dobInput = document.getElementById('dob');
+
+// Get error message elements
+const nameError = document.getElementById('nameError');
+const emailError = document.getElementById('emailError');
+const contactError = document.getElementById('contactError');
+const ageError = document.getElementById('ageError');
+const designationError = document.getElementById('designationError');
+const dobError = document.getElementById('dobError');
+
+// Regular Expressions for validation
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const contactRegex = /^\d{10}$/;
+
+// Function to validate all fields
+function validateForm() {
+    let isValid = true;
+
+    // Validate Name
+    if (nameInput.value.length < 3) {
+        nameError.style.display = 'block';
+        isValid = false;
+    } else {
+        nameError.style.display = 'none';
+    }
+
+    // Validate Email
+    if (!emailRegex.test(emailInput.value)) {
+        emailError.style.display = 'block';
+        isValid = false;
+    } else {
+        emailError.style.display = 'none';
+    }
+
+    // Validate Contact
+    if (!contactRegex.test(contactInput.value)) {
+        contactError.style.display = 'block';
+        isValid = false;
+    } else {
+        contactError.style.display = 'none';
+    }
+    
+    // Validate Age
+    const age = parseInt(ageInput.value);
+    if (isNaN(age) || age < 18 || age > 100) {
+        ageError.style.display = 'block';
+        isValid = false;
+    } else {
+        ageError.style.display = 'none';
+    }
+
+    // Validate Designation
+    if (designationInput.value.trim() === '') {
+        designationError.style.display = 'block';
+        isValid = false;
+    } else {
+        designationError.style.display = 'none';
+    }
+
+    // Validate DOB
+    if (dobInput.value === '') {
+        dobError.style.display = 'block';
+        isValid = false;
+    } else {
+        dobError.style.display = 'none';
+    }
+    
+    return isValid;
+}
+
+// Event listener for form submission
+form.addEventListener('submit', function(event) {
+    // Prevent the form from submitting by default
+    event.preventDefault();
+
+    if (validateForm()) {
+        // If the form is valid, you can process the data
+        // For example, display a success message and log the data
+        console.log("Form is valid! Submitting data...");
+        const formData = {
+            name: nameInput.value,
+            email: emailInput.value,
+            contact: contactInput.value,
+            age: ageInput.value,
+            designation: designationInput.value,
+            dob: dobInput.value
+        };
+        console.log(formData);
+        
+        // Optionally, reset the form
+        form.reset();
+    } else {
+        console.log("Form has validation errors.");
+    }
+});
+    </script>
+    <script src="validation.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 15</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        .task-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label, input, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Task 15: JavaScript Practice</h1>
+
+    <div class="task-section">
+        <h2>1. Check if a number is a multiple of 3</h2>
+        <label for="numberInput">Enter a number:</label>
+        <input type="number" id="numberInput" value="10900">
+        <button onclick="checkMultipleOf3()">Check</button>
+        <div id="multipleResult" class="result"></div>
+    </div>
+
+    <div class="task-section">
+        <h2>2. Check for a particular sub-word</h2>
+        <label for="sentenceInput">Enter a sentence:</label>
+        <input type="text" id="sentenceInput" value="i am learning js">
+        <label for="wordInput">Enter a word to search for:</label>
+        <input type="text" id="wordInput" value="js">
+        <button onclick="checkSubWord()">Check</button>
+        <div id="subWordResult" class="result"></div>
+    </div>
+
+    <div class="task-section">
+        <h2>3. Calculate Complex Interest</h2>
+        <p>Formula: ((P * R * T) / 100)</p>
+        <label for="principal">Principal (P):</label>
+        <input type="number" id="principal" value="1000">
+        <label for="rate">Rate (R):</label>
+        <input type="number" id="rate" value="5">
+        <label for="time">Time (T):</label>
+        <input type="number" id="time" value="2">
+        <button onclick="calculateComplexInterest()">Calculate</button>
+        <div id="interestResult" class="result"></div>
+    </div>
+
+    <script>
+        // Task 1: Check if a number is a multiple of 3
+        function checkMultipleOf3() {
+            const number = document.getElementById('numberInput').value;
+            const resultDiv = document.getElementById('multipleResult');
+            // Use the modulo operator (%) to check for a remainder
+            if (number % 3 === 0) {
+                resultDiv.textContent = `Yes, ${number} is a multiple of 3.`;
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = `No, ${number} is not a multiple of 3.`;
+                resultDiv.style.color = 'red';
+            }
+        }
+
+        // Task 2: Check for a particular sub-word
+        function checkSubWord() {
+            const sentence = document.getElementById('sentenceInput').value;
+            const word = document.getElementById('wordInput').value;
+            const resultDiv = document.getElementById('subWordResult');
+            // The .includes() method checks if a string contains another string
+            if (sentence.includes(word)) {
+                resultDiv.textContent = `Yes, '${word}' exists in the sentence.`;
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = `No, '${word}' does not exist in the sentence.`;
+                resultDiv.style.color = 'red';
+            }
+        }
+
+        // Task 3: Calculate Complex Interest (Note: the formula given is for Simple Interest)
+        function calculateComplexInterest() {
+            const principal = document.getElementById('principal').value;
+            const rate = document.getElementById('rate').value;
+            const time = document.getElementById('time').value;
+            const resultDiv = document.getElementById('interestResult');
+
+            // The formula provided ((p/r) * t / 100) is incorrect.
+            // The formula for Simple Interest is (P * R * T) / 100.
+            // Let's use the correct Simple Interest formula as the given formula is invalid.
+            const interest = (principal * rate * time) / 100;
+
+            // Using the user-provided formula just for demonstration
+            // const incorrectFormulaResult = (principal / rate * time) / 100;
+            // console.log("Result from incorrect formula:", incorrectFormulaResult);
+
+            resultDiv.textContent = `The calculated interest is: ${interest}`;
+            resultDiv.style.color = 'blue';
+        }
+    </script>
+</body>
+</html>

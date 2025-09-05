@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Div with Background Image and Button</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box box1">
+      <div class="overlay">
+        <h1>Box 1</h1>
+        <p>cat meow🐱ྀི ⋆🐾° ᡣ𐭩</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+    <div class="box box2">
+      <div class="overlay">
+        <h1>Box 2</h1>
+        <p>buttefly ˚.🎀༘⋆⋆.˚🦋༘⋆</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+    <div class="box box3">
+      <div class="overlay">
+        <h1>Box 3</h1>
+        <p>swan 🌷🦢✨🤍</p>
+        <button>Learn More</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+<style>
+    .container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #ddd;
+  margin: 20px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.box1 {
+    background-image: url('https://in.pinterest.com/pin/681521356108343450/');
+}
+
+.box2 {
+  background-image: url('../images/image2.jpg');
+}
+
+.box3 {
+  background-image: url('../images/image3.jpg');
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.overlay button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background-color: #3e8e41;
+}
+
+</style>

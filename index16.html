@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 16</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .task-section { margin-bottom: 25px; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .result { margin-top: 10px; font-weight: bold; }
+        input[type="number"], input[type="text"] { margin-bottom: 10px; }
+        button { padding: 8px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h1>Task 16: JavaScript Loops & Logic</h1>
+
+    <div class="task-section">
+        <h2>1. Display Even Numbers up to N</h2>
+        <label for="nNumber">Enter a number (n):</label>
+        <input type="number" id="nNumber" value="20">
+        <button onclick="displayEvenNumbers()">Display</button>
+        <p class="result">Even numbers: <span id="evenNumbersResult"></span></p>
+    </div>
+
+    <div class="task-section">
+        <h2>2. Check if a Character is a Vowel or Consonant</h2>
+        <label for="charInput">Enter a single character:</label>
+        <input type="text" id="charInput" maxlength="1">
+        <button onclick="checkCharType()">Check</button>
+        <p class="result" id="charTypeResult"></p>
+    </div>
+
+    <div class="task-section">
+        <h2>3. Count of Even and Odd Numbers (1 to 999)</h2>
+        <button onclick="countEvenOdd()">Count</button>
+        <p class="result" id="evenOddResult"></p>
+    </div>
+
+    <div class="task-section">
+        <h2>4. Count Character Occurrences in a String</h2>
+        <label for="stringInput">Enter a string:</label>
+        <input type="text" id="stringInput" value="hello">
+        <label for="charToCount">Enter character to count:</label>
+        <input type="text" id="charToCount" maxlength="1" value="l">
+        <button onclick="countOccurrences()">Count</button>
+        <p class="result" id="countResult"></p>
+    </div>
+
+    <div class="task-section">
+        <h2>5. Sum and Average of Array Elements</h2>
+        <p>Array: [1, 9, 8]</p>
+        <button onclick="calculateSumAndAverage()">Calculate</button>
+        <p class="result" id="sumAverageResult"></p>
+    </div>
+
+    <div class="task-section">
+        <h2>6. Find the Largest Number in an Array (with a loop)</h2>
+        <p>Array: [1, 9, 8, 25, 4, 12]</p>
+        <button onclick="findLargestNumber()">Find</button>
+        <p class="result" id="largestNumberResult"></p>
+    </div>
+
+    <script>
+        // All JavaScrip// 1. Display even numbers up to n number
+function displayEvenNumbers() {
+    const n = document.getElementById('nNumber').value;
+    const resultSpan = document.getElementById('evenNumbersResult');
+    let evenNumbers = [];
+    for (let i = 2; i <= n; i += 2) {
+        evenNumbers.push(i);
+    }
+    resultSpan.textContent = evenNumbers.join(', ');
+}
+
+// 2. Check if a character is a vowel or consonant
+function checkCharType() {
+    const char = document.getElementById('charInput').value.toLowerCase();
+    const resultP = document.getElementById('charTypeResult');
+    const vowels = 'aeiou';
+    
+    if (char.length !== 1 || !/[a-z]/.test(char)) {
+        resultP.textContent = 'Please enter a single alphabet character.';
+        return;
+    }
+    
+    if (vowels.includes(char)) {
+        resultP.textContent = `'${char}' is a vowel.`;
+    } else {
+        resultP.textContent = `'${char}' is a consonant.`;
+    }
+}
+
+// 3. Count of even and odd numbers from 1 to 999
+function countEvenOdd() {
+    const resultP = document.getElementById('evenOddResult');
+    let evenCount = 0;
+    let oddCount = 0;
+    for (let i = 1; i <= 999; i++) {
+        if (i % 2 === 0) {
+            evenCount++;
+        } else {
+            oddCount++;
+        }
+    }
+    resultP.textContent = `Even count: ${evenCount}, Odd count: ${oddCount}`;
+}
+
+// 4. Count occurrence of a particular character in a string
+function countOccurrences() {
+    const str = document.getElementById('stringInput').value;
+    const char = document.getElementById('charToCount').value;
+    const resultP = document.getElementById('countResult');
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] === char) {
+            count++;
+        }
+    }
+    resultP.textContent = `The character '${char}' appears ${count} time(s).`;
+}
+
+// 5. Sum and average of array elements
+function calculateSumAndAverage() {
+    const arr = [1, 9, 8];
+    const resultP = document.getElementById('sumAverageResult');
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    const average = sum / arr.length;
+    resultP.textContent = `Sum: ${sum}, Average: ${average}`;
+}
+
+// 6. Largest number in an array (do with loops)
+function findLargestNumber() {
+    const arr = [1, 9, 8, 25, 4, 12];
+    const resultP = document.getElementById('largestNumberResult');
+    let largest = arr[0]; // Assume the first element is the largest
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > largest) {
+            largest = arr[i]; // Update largest if a bigger number is found
+        }
+    }
+    resultP.textContent = `The largest number is: ${largest}`;
+}
+
+// --- Concepts: DOM, BOM, Hoisting ---
+
+// DOM (Document Object Model):
+// The above code extensively uses the DOM.
+// For example, document.getElementById() and element.textContent are DOM methods.
+// The DOM is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content.
+
+// BOM (Browser Object Model):
+// The BOM is a broader concept that includes the DOM.
+// It gives you access to the browser's features.
+// Examples of BOM objects are window, navigator, and history.
+// While not used in this specific code, a common BOM function is alert() or window.location.href.
+
+// Hoisting:
+// Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope.
+// This is why you can call functions like 'displayEvenNumbers()' before they are defined in the code.
+// For example:
+myHoistedFunction(); // This works due to hoisting
+function myHoistedFunction() {
+    console.log("This function is hoisted.");
+}
+
+// Variable hoisting: `var` is hoisted and initialized to `undefined`.
+console.log(myHoistedVariable); // Output: undefined
+var myHoistedVariable = 'Hello';
+// `let` and `const` are also hoisted, but they are not initialized.
+// Accessing them before declaration results in a `ReferenceError`.
+// console.log(myNotHoistedVariable); // This would cause an error
+// let myNotHoistedVariable = 'Hello';t functions go here
+    </script>
+
+</body>
+</html>

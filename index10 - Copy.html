@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Replication</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 150px; /* Adjust as needed */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 50%; /* Make it circular */
+            margin-right: 20px;
+        }
+        .blue-box {
+            width: 200px; /* Adjust as needed */
+            height: 200px; /* Adjust as needed */
+            background-color: lightblue;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+            max-width: 800px; /* Adjust as needed */
+        }
+        .image-grid div {
+            background-color: #ccc; /* Placeholder color */
+            height: 100px; /* Adjust according to your needs */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="Ronaldo4.jpg" alt="Cristiano Ronaldo">
+        <div class="blue-box"></div>
+    </div>
+
+    <div class="image-grid">
+        <div style="background-image: url('path/to/image1.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image2.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image3.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image4.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image5.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image6.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image7.jpg'); background-size: cover;"></div>
+        <div style="background-image: url('path/to/image8.jpg'); background-size: cover;"></div>
+    </div>
+
+</body>
+</html>
